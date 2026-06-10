@@ -17,8 +17,8 @@ api.interceptors.response.use(
     (res) => res,
     (error) => {
         const message =
-            error.response ? .data ? .message || error.message || 'حدث خطأ غير متوقع';
-        if (error.response ? .status === 401 && localStorage.getItem('md_token')) {
+            error.response?.data?.message || error.message || 'حدث خطأ غير متوقع';
+        if (error.response?.status === 401 && localStorage.getItem('md_token')) {
             localStorage.removeItem('md_token');
             localStorage.removeItem('md_user');
             // soft redirect
