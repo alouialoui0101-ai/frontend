@@ -1,21 +1,22 @@
 import { io } from 'socket.io-client';
 
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const baseURL =
+    import.meta.env.VITE_API_URL || 'https://backend-k0en.onrender.com';
 
 let socket = null;
 
 export const connectSocket = () => {
-  if (!socket) {
-    socket = io(baseURL, { transports: ['websocket', 'polling'] });
-  }
-  return socket;
+    if (!socket) {
+        socket = io(baseURL, { transports: ['websocket', 'polling'] });
+    }
+    return socket;
 };
 
 export const getSocket = () => socket;
 
 export const disconnectSocket = () => {
-  if (socket) {
-    socket.disconnect();
-    socket = null;
-  }
+    if (socket) {
+        socket.disconnect();
+        socket = null;
+    }
 };
